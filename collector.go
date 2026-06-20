@@ -20,10 +20,10 @@ func NewWgCollector(device string) *WgCollector {
 
 	labels := prometheus.Labels{"device": device}
 
-	rx := prometheus.NewDesc("wireguard_peer_transfer_rx_bytes_total", "Bytes received from Wireguard peer", []string{"peer"}, labels)
-	tx := prometheus.NewDesc("wireguard_peer_transfer_tx_bytes_total", "Bytes sent to Wireguard peer", []string{"peer"}, labels)
-	hs := prometheus.NewDesc("wireguard_peer_latest_handshake", "Latest handshake for Wireguard peer", []string{"peer"}, labels)
-	err := prometheus.NewDesc("wireguard_peer_metric_collector_error", "Error metric for the Wireguard peer collector", nil, labels)
+	rx := prometheus.NewDesc("wireguard_transfer_rx_bytes_total", "Bytes received from Wireguard peer", []string{"peer"}, labels)
+	tx := prometheus.NewDesc("wireguard_transfer_tx_bytes_total", "Bytes sent to Wireguard peer", []string{"peer"}, labels)
+	hs := prometheus.NewDesc("wireguard_latest_handshake", "Latest handshake for Wireguard peer", []string{"peer"}, labels)
+	err := prometheus.NewDesc("wireguard_metric_collector_error", "Error metric for the Wireguard peer collector", nil, labels)
 
 	return &WgCollector{
 		device: device,
