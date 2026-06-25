@@ -1,11 +1,18 @@
-** Prometheus Wireguard exporter
+## Simple Prometheus Wireguard exporter
 
-Will export the following metrics for each Wireguard peer for a Wireguard interface:
+Exports the following metrics for each wg peer for a wg interface:
   - latest handshake
   - transfer rx
   - transfer tx
+  - error (if something goes wrong collecting metrics)
 
-Flags:
+As it is stateless there is no need to restart the collector if adding new peers
+
+### Buildning/testing:
+  - go test ./...
+  - go build -o wg-exporter main.go
+
+### Flags:
   - i : wireguard interface
   - l : listen address
   - p : port to use
