@@ -18,7 +18,7 @@ var (
 
 func parseFlags() {
 	flag.StringVar(&i, "i", "wg0", "wireguard interface")
-	flag.StringVar(&l, "l", "*", "address to listen on for polling")
+	flag.StringVar(&l, "l", "", "address to listen on for polling")
 	flag.StringVar(&p, "p", "8090", "listening port")
 	flag.Parse()
 
@@ -37,6 +37,6 @@ func main() {
 	addr := fmt.Sprintf("%s:%s", l, p)
 	log.Printf("listening on %s\n", addr)
 
-	http.ListenAndServe(addr, nil)
+	log.Println(http.ListenAndServe(addr, nil))
 
 }
